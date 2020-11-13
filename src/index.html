@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sample HTML</title>
+  <title>Weather</title>
 </head>
 <body>
   <div class="container">
-    <h1 class="jumbotron">Sample HTML</h1>
-    <img src="assets/images/puppy.jpg" alt="Photo of puppy">
+    <h1>Get Weather Conditions From Anywhere!</h1>
+    <label for="location">Enter a location:</label>
+    <input id="location" type="text">
+    <button class="btn-success" id="weatherLocation">Get Current Temperature and Humidity</button>
+    <div class="showErrors"></div>
+    <div class="showHumidity"></div>
+    <div class="showTemp"></div>
   </div>
 </body>
+</html>
