@@ -8,7 +8,7 @@ $(document).ready(function() {
     const userInput = $('#user-search').val();
 
     let request = new XMLHttpRequest();
-    let url = `https://api.giphy.com/v1/gifs/random?api_key=${process.env.API_KEY}&rating=r&lang=en`;
+    let url = `https://api.giphy.com/v1/gifs/random/?api_key=${process.env.API_KEY}&rating=r&lang=en`;
 
     if(userInput) {
       url = url + `&tag=${userInput}`;
@@ -35,15 +35,15 @@ $(document).ready(function() {
 
     request.onreadystatechange = function() {
       try {
-          if(this.status === 403) {
-            throw "invalid";
-          } else if (this.readyState === 4 && this.status === 200) {
+        if(this.status === 403) {
+          throw "invalid";
+        } else if (this.readyState === 4 && this.status === 200) {
           const response = JSON.parse(this.responseText);
           getElements(response);
-          }
-        } catch (error) {
-          $("#error").text("input is " + error);
         }
+      } catch (error) {
+        $("#error").text("input is " + error);
+      }
     };
 
     request.open("GET", urlRandom, true);
