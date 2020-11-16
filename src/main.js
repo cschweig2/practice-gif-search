@@ -31,18 +31,22 @@ $(document).ready(function() {
   });
 
   $('#trendingGif').click(function() {
-
     let request = new XMLHttpRequest();
     let urlRandom = `https://api.giphy.com/v1/gifs/trending?api_key=${process.env.API_KEY}&limit=25&rating=r&lang=en`;
 
     request.onreadystatechange = function() {
-      if (this.readyState === 4 && this.status === 200) {
-        const response = JSON.parse(this.responseText);
-        getElements(response);
-      }
+      try {
+          if(this.status === 403) {
+            throw "invalid";
+          } else if (this.readyState === 4 && this.status === 200) {
+          const response = JSON.parse(this.responseText);
+          getElements(response);
+          }
+        } catch (error) {
+          $("#error").text("input is " + error);
+        }
     };
 
-  
     request.open("GET", urlRandom, true);
     request.send();
 
