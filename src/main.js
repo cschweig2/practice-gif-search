@@ -6,7 +6,6 @@ import './css/styles.css';
 $(document).ready(function() {
   $('#gifResults').click(function() {
     const userInput = $('#user-search').val();
-    // $('#user-search').val("");
 
     let request = new XMLHttpRequest();
     let url = `https://api.giphy.com/v1/gifs/random?api_key=${process.env.API_KEY}&rating=r&lang=en`;
