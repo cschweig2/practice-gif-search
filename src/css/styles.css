@@ -2,3 +2,7 @@ h1 {
   color: rgb(18, 82, 165);
   text-align: center;
 }
+
+.btn-danger {
+margin-top: 50px;
+}
