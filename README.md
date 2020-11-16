@@ -32,7 +32,7 @@ _None._
 
 ## Support and contact details
 
-_If you run into any issues, you can contact the creator at cschweig2@gmail.com, or make contributions to the code on GitHub via forking and creating a new branch._
+_If you run into any issues, you can contact the creator at chelraebecker@gmail.com, or make contributions to the code on GitHub via forking and creating a new branch._
 
 ## Technologies Used
 
