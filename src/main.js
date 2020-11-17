@@ -2,56 +2,30 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
+import GiphyService from './services/GiphyService.js';
 
 $(document).ready(function() {
   $('#gifResults').click(function() {
     const userInput = $('#user-search').val();
-
-    let request = new XMLHttpRequest();
-    let url = `https://api.giphy.com/v1/gifs/random/?api_key=${process.env.API_KEY}&rating=r&lang=en`;
-
-    if(userInput) {
-      url = url + `&tag=${userInput}`;
-    }
-
-    request.onreadystatechange = function() {
-      if (this.readyState === 4 && this.status === 200) {
-        const response = JSON.parse(this.responseText);
-        getElements(response);
-      }
-    };
-
-    request.open("GET", url, true);
-    request.send();
-
-    function getElements(response) {
-      $('.showGIF').html(`<iframe src="${response.data.embed_url}"></iframe>`);
-    }
+    $("#user-search").val("");
+    let promise = GiphyService.searchGif(userInput);
+    promise.then(function(response) {
+      const body = JSON.parse(response);
+      console.log(body.data.embed_url);
+      $('.showGIF').html(`<iframe src="${body.data.embed_url}"></iframe>`);
+    }, function(error) {
+      $("#error").text(`There was an error processing your request: ${error}`);
+    });
   });
 
   $('#trendingGif').click(function() {
-    let request = new XMLHttpRequest();
-    let urlRandom = `https://api.giphy.com/v1/gifs/trending?api_key=${process.env.API_KEY}&limit=25&rating=r&lang=en`;
-
-    request.onreadystatechange = function() {
-      try {
-        if(this.status === 403) {
-          throw "invalid";
-        } else if (this.readyState === 4 && this.status === 200) {
-          const response = JSON.parse(this.responseText);
-          getElements(response);
-        }
-      } catch (error) {
-        $("#error").text("input is " + error);
-      }
-    };
-
-    request.open("GET", urlRandom, true);
-    request.send();
-
-    function getElements(response) {
+    let promise = GiphyService.trendingGif();
+    promise.then(function(response) {
+      const body = JSON.parse(response);
       const i = Math.floor(Math.random() * 25);
-      $('.showRandom').html(`<iframe src="${response.data[i].embed_url}"></iframe>`);
-    }
+    $('.showGIF').html(`<iframe src="${body.data[i].embed_url}"></iframe>`);
+    }, function(error) {
+      $("#error").text(`There was an error processing your request: ${error}`);
+    });
   });
 });
