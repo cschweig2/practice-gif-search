@@ -10,16 +10,20 @@ _This application will search the GIPHY database of GIF's to find the one you ar
 
 ## Setup/Installation Requirements
 ### View Online
-1. _Open the webpage at https://cschweig2.github.io/practice-gif-search._
+~~1. _Open the webpage at https://cschweig2.github.io/practice-gif-search._
 2. _Enter your keyword to search for a random GIF relevant to that keyword._
 3. _Leave field blank if you would like to receive an entirely random GIF._
-4. _Click the trending button to receive a GIF that is currently trending on GIPHY._
+4. _Click the trending button to receive a GIF that is currently trending on GIPHY._~~
 
 ### View locally (on computer)
 1. _Open web browser and go to https://github.com/cschweig2/practice-gif-search_
 2. _After clicking the green "code" button, you can copy the URL for the repository._
 3. _Open a terminal window, such as Command Prompt or Git Bash._<br>
   3a. _Type in this command: "git clone", followed by the URL you just copied. The full command should look like this: "git clone https://github.com/cschweig2/practice-gif-search.git"._
+4. _After installing node.js, run npm install to install all dependencies._
+5. _Visit https://giphy.com to obtain an API key._<br>
+5a. _After obtaining an API key, create a .env file and add the file to your .gitignore._<br>
+5b. _Add the API key to the .env file as "API_KEY={YOUR_API_KEY}"._
 4. _You may view the website displaying the application by clicking the index.html file or view the code on your favorite text editor, such as Visual Studio Code._
 
 ## Known Bugs
