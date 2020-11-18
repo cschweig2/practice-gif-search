@@ -11,7 +11,6 @@ $(document).ready(function() {
     let promise = GiphyService.searchGif(userInput);
     promise.then(function(response) {
       const body = JSON.parse(response);
-      console.log(body.data.embed_url);
       $('.showGIF').html(`<iframe src="${body.data.embed_url}"></iframe>`);
     }, function(error) {
       $("#error").text(`There was an error processing your request: ${error}`);
